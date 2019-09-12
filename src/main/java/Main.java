@@ -1,33 +1,20 @@
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
 
-    static int[] number(int i) {
-        int[] tab = new int[i - 2];
-        for (int j = 3; j <= i; j++) {
-
-            tab[j - 3] = j;
-
-        }
-        return tab;
+    static List<Integer> numberWithoutEven(int i) {
+        List<Integer> lista = new ArrayList<Integer>();
+        return lista = IntStream.range(3, i).filter(x -> x % 2 != 0).boxed().collect(Collectors.toList());
     }
 
-    static int[] returnNumberWithoutEven(int[] tab) {
-        int j = 0;
-        int[] tab1 = new int[0];
-        for (int i = 0; i < tab.length; i++) {
-            if (tab[i] % 2 != 0) {
-                tab1 = Arrays.copyOf(tab1, tab1.length + 1);
-                tab1[j] = tab[i];
-                j++;
-            }
 
-        }
-        return tab1;
-    }
-
-    static int[] returnPrimeNumber(int[] eventab) {
+    static int[] returnPrimeNumber(List<Integer> number) {
+        int[] eventab = number.stream().mapToInt(i -> i).toArray();
         Double d = (double) eventab[eventab.length - 1];
         int i = 0;
         while (i < Math.sqrt(d)) {
@@ -64,7 +51,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        Main mn = new Main();
 
-        System.out.println(Arrays.toString(returnPrimeNumberWithou0(returnPrimeNumber(returnNumberWithoutEven(number(500000))))));
+        System.out.println(Arrays.toString(returnPrimeNumberWithou0(returnPrimeNumber(numberWithoutEven(500000)))));
     }
 }
