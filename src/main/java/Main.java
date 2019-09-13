@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class Main {
 
     private static List<Integer> numberWithoutEven(int i) {
-        return IntStream.range(3, i).filter(x -> x % 2 != 0).boxed().collect(Collectors.toList());
+        return IntStream.range(3, i + 1).filter(x -> x % 2 != 0).boxed().collect(Collectors.toList());
     }
 
 
@@ -15,8 +15,8 @@ public class Main {
         int[] eventab = number.stream().mapToInt(i -> i).toArray();
         double d = eventab[eventab.length - 1];
         int i = 0;
-        while (i < Math.sqrt(d)) {
-            for (int k = 0; k <= eventab.length - 2; ) {
+        while (i <= Math.sqrt(d)) {
+            for (int k = 0; k < eventab.length - 1; ) {
                 if ((k + 1) > i)
                     if ((eventab[k + 1] != 0 && eventab[i] != 0) && eventab[k + 1] % eventab[i] == 0) {
                         eventab[k + 1] = 0;
@@ -50,8 +50,8 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Put max value of prime number which would you like to print in array");
-        int n =sc.nextInt();
+        System.out.println("Put max value of potential prime number which would you like to print in array");
+        int n = sc.nextInt();
         System.out.println(Arrays.toString(returnPrimeNumberWithou0(returnPrimeNumber(numberWithoutEven(n)))));
     }
 }
